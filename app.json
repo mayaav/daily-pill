@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "pills-app",
-    "slug": "pills-app",
+    "name": "Daily Pill",
+    "slug": "daily-pill",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,21 +10,40 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F5F5F0"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pillapp.daily",
+      "infoPlist": {
+        "NSUserNotificationsUsageDescription": "Daily Pill sends you a reminder to log your pill each day.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#F5F5F0"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "@react-native-community/datetimepicker",
+      [
+        "expo-notifications",
+        {
+          "iosDisplayInForeground": true
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2125e2f6-104f-46c4-b3a4-bd69e697741b"
+      }
     }
   }
 }

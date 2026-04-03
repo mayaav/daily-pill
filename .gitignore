@@ -32,6 +32,14 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
+
+# EAS / credentials
+credentials.json
+
+# Raw design assets
+*.png.orig
+"Green capsule on off-white background.png"
 
 # typescript
 *.tsbuildinfo
