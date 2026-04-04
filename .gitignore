@@ -39,7 +39,11 @@ credentials.json
 
 # Raw design assets
 *.png.orig
-"Green capsule on off-white background.png"
+Green capsule on off-white background.png
+screenshot_*.png
+1.png
+2.png
+3.png
 
 # typescript
 *.tsbuildinfo
