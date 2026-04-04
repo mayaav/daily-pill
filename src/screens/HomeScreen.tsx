@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Animated, AppState, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { BrutalButton } from "../components/BrutalButton";
 import { BrutalCard } from "../components/BrutalCard";
@@ -16,6 +16,7 @@ type Props = {
 };
 
 export function HomeScreen({ reminderTime, reminderEnabled, onOpenSettings }: Props) {
+  const insets = useSafeAreaInsets();
   const [takenAt, setTakenAt] = useState<string | null>(null);
   const [undoSecondsLeft, setUndoSecondsLeft] = useState(0);
   const fadeAnim = useRef(new Animated.Value(1)).current;
@@ -77,9 +78,9 @@ export function HomeScreen({ reminderTime, reminderEnabled, onOpenSettings }: Pr
   const bg = isTaken ? "#2D7A4F" : "#F5F5F0";
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: bg }}>
+    <View style={{ flex: 1, backgroundColor: bg }}>
         {/* Header */}
-        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 24, paddingTop: 8, paddingBottom: 4 }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 24, paddingTop: insets.top + 8, paddingBottom: 4 }}>
           <Text style={{ fontSize: 13, fontWeight: "700", letterSpacing: 2, color: isTaken ? "rgba(255,255,255,0.6)" : "#999", textTransform: "uppercase" }}>
             Daily Pill
           </Text>
@@ -122,6 +123,6 @@ export function HomeScreen({ reminderTime, reminderEnabled, onOpenSettings }: Pr
             </>
           )}
         </Animated.View>
-    </SafeAreaView>
+    </View>
   );
 }

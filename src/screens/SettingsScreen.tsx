@@ -21,7 +21,7 @@ export function SettingsScreen({
   onBack,
 }: Props) {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#F5F5F0", paddingHorizontal: 24 }}>
+    <SafeAreaView edges={["top", "left", "right", "bottom"]} style={{ flex: 1, backgroundColor: "#F5F5F0", paddingHorizontal: 24 }}>
       <TouchableOpacity onPress={onBack} style={{ paddingVertical: 12, marginBottom: 24 }}>
         <Text style={{ fontSize: 16, fontWeight: "700", color: "#111" }}>← Back</Text>
       </TouchableOpacity>

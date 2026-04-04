@@ -28,9 +28,11 @@ export async function scheduleReminder(hour: number, minute: number) {
   await Notifications.scheduleNotificationAsync({
     content: { title: "Pill reminder", body: "Did you take your pill today?" },
     trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DAILY,
+      type: Notifications.SchedulableTriggerInputTypes.CALENDAR,
       hour,
       minute,
+      repeats: true,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     },
   });
 }

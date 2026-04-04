@@ -1,5 +1,6 @@
 import "./global.css";
 import { useEffect, useState } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { HomeScreen } from "./src/screens/HomeScreen";
 import { SettingsScreen } from "./src/screens/SettingsScreen";
 import {
@@ -58,22 +59,26 @@ export default function App() {
 
   if (screen === "settings") {
     return (
-      <SettingsScreen
-        reminderEnabled={reminderEnabled}
-        reminderTime={reminderTime}
-        onTimeChange={handleTimeChange}
-        onToggle={handleToggleReminder}
-        onReset={clearDose}
-        onBack={() => setScreen("home")}
-      />
+      <SafeAreaProvider>
+        <SettingsScreen
+          reminderEnabled={reminderEnabled}
+          reminderTime={reminderTime}
+          onTimeChange={handleTimeChange}
+          onToggle={handleToggleReminder}
+          onReset={clearDose}
+          onBack={() => setScreen("home")}
+        />
+      </SafeAreaProvider>
     );
   }
 
   return (
-    <HomeScreen
-      reminderTime={reminderTime}
-      reminderEnabled={reminderEnabled}
-      onOpenSettings={() => setScreen("settings")}
-    />
+    <SafeAreaProvider>
+      <HomeScreen
+        reminderTime={reminderTime}
+        reminderEnabled={reminderEnabled}
+        onOpenSettings={() => setScreen("settings")}
+      />
+    </SafeAreaProvider>
   );
 }
