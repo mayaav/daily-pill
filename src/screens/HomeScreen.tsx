@@ -28,6 +28,10 @@ export function HomeScreen({ reminderTime, reminderEnabled, onOpenSettings }: Pr
     const sub = AppState.addEventListener("change", (state) => {
       if (state === "active") {
         loadTodayLog().then(setTakenAt);
+        // Reschedule daily reminder with correct local time on each foreground
+        if (reminderEnabled && reminderTime) {
+          scheduleReminder(reminderTime.getHours(), reminderTime.getMinutes());
+        }
       }
     });
     return () => sub.remove();
