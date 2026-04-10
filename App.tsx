@@ -29,6 +29,8 @@ export default function App() {
       d.setHours(saved.hour, saved.minute, 0, 0);
       setReminderTime(d);
       setReminderEnabled(true);
+      // Reschedule on every app open in case iOS dropped it
+      scheduleReminder(saved.hour, saved.minute);
     });
   }, []);
 
