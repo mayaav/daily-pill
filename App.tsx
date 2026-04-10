@@ -8,6 +8,7 @@ import {
   scheduleReminder,
   cancelReminder,
 } from "./src/lib/notifications";
+import { registerReminderWithBackend } from "./src/lib/pushToken";
 import {
   loadReminder,
   saveReminder,
@@ -44,6 +45,7 @@ export default function App() {
       setReminderEnabled(true);
       await scheduleReminder(9, 0);
       await saveReminder(9, 0);
+      await registerReminderWithBackend(9, 0);
     } else {
       setReminderEnabled(false);
       setReminderTime(null);
@@ -57,6 +59,7 @@ export default function App() {
     setReminderTime(selected);
     await scheduleReminder(selected.getHours(), selected.getMinutes());
     await saveReminder(selected.getHours(), selected.getMinutes());
+    await registerReminderWithBackend(selected.getHours(), selected.getMinutes());
   }
 
   if (screen === "settings") {
